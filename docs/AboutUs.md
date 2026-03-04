@@ -44,15 +44,14 @@ _A Year 2 Mathematics and Computer Science student at NUS with an interest in ba
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Nguyen Viet Quang
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/vietquang1006.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/vietquang1006)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Backend
 
 ### Nguyen An Thinh
 
