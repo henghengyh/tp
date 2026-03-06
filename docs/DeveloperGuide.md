@@ -329,6 +329,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     1. A new user should be able to learn basic commands (add, delete, find, list) within 10 minutes using the provided user guide.
 6. Data Persistence
     1. Should not lose stored contacts when the application is closed normally and persist the stored contacts between application sessions.
+7. Reliability
+    1. Should operate without crashes during normal usage and when executing valid commands.
+8. Robustness
+    1. Should handle invalid or malformed user input gracefully by displaying appropriate error messages without terminating the application.
+9. Startup Time
+    1. Should launch and be ready to accept commands within 2 seconds (under typical scenarios).
+10. User Operation Feedback
+    1. Should provide clear and consistent feedback messages to inform the user of successful or failed operations.
+11. Fault Tolerance
+    1. Should ensure that existing contact data remains intact even if a command execution fails due to invalid input. 
 
 *{More to be added}*
 
