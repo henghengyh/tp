@@ -324,7 +324,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. CLI Productivity 
     1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. Performance 
-    1. Should return search results within 1 second for about 1000 stored contacts.
+    1. Should return search results within **1 second** for about **1000 stored contacts**.
 5. Usability 
     1. A new user should be able to learn basic commands (add, delete, find, list) within 10 minutes using the provided user guide.
 6. Data Persistence
@@ -333,9 +333,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     1. Should operate without crashes during normal usage and when executing valid commands.
     2. Should handle invalid or malformed user input gracefully by displaying appropriate error messages without terminating the application.
 8. Startup Time
-    1. Should launch and be ready to accept commands within 2 seconds (under typical scenarios).
+    1. Should launch and be ready to accept commands within **2 seconds** (under typical scenarios).
 9. User Operation Feedback
-    1. Should provide clear and consistent feedback messages to inform the user of successful or failed operations.
+    1. Should provide _clear and consistent_ feedback messages (using the same format) to inform the user of successful or failed operations.
 10. Fault Tolerance
     1. Should ensure that existing contact data remains intact even if a command execution fails due to invalid input. 
 
