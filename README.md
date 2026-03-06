@@ -1,7 +1,6 @@
-[![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
+[![Java CI Passing](https://github.com/AY2526S2-CS2103T-W13-3/tp/actions/workflows/gradle.yml/badge.svg)](https://github.com/AY2526S2-CS2103T-W13-3/tp/actions/workflows/gradle.yml)
 [![codecov](https://codecov.io/gh/AY2526S2-CS2103T-W13-3/tp/graph/badge.svg?token=74GXALW1CP)](https://codecov.io/gh/AY2526S2-CS2103T-W13-3/tp)
 ![Ui](docs/images/Ui.png)
-
 * This is **the W13-3 sample project for Software Engineering (SE) students**.<br>
   Example usages:
   * as a starting point of a course project (as opposed to writing everything from scratch)
