@@ -3,8 +3,9 @@ package seedu.address.model.person;
 import java.util.List;
 import java.util.function.Predicate;
 
-import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 
 /**
  * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
@@ -12,7 +13,11 @@ import seedu.address.commons.util.ToStringBuilder;
 public class NameContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
 
-    public NameContainsKeywordsPredicate(List<String> keywords) {
+    public NameContainsKeywordsPredicate(List<String> keywords) throws CommandException {
+        if (keywords.stream().anyMatch(keyword -> !keyword.matches("^[a-zA-Z0-9]+$"))) {
+            throw new CommandException(Messages.MESSAGE_CONTAINS_NON_ALPHANUMERIC_CHARACTER);
+        }
+
         this.keywords = keywords;
     }
 
