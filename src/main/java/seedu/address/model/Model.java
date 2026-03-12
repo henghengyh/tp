@@ -19,8 +19,7 @@ public interface Model {
                     (Person p) -> p.getName().fullName,
                     String.CASE_INSENSITIVE_ORDER
             ).thenComparing(p -> p.getName().fullName);
-//    Comparator<Person> SORT_BY_NAME_DESCENDING = SORT_BY_NAME_ASCENDING.reversed();
-//    TODO: Implement sorting descending when needed
+    Comparator<Person> SORT_BY_NAME_DESCENDING = SORT_BY_NAME_ASCENDING.reversed();
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.

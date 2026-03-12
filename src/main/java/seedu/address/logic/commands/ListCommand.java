@@ -2,6 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.SORT_BY_NAME_ASCENDING;
+import static seedu.address.model.Model.SORT_BY_NAME_DESCENDING;
 
 import seedu.address.model.Model;
 
@@ -21,10 +23,16 @@ public class ListCommand extends Command {
             + "Parameters: [sort]\n"
             + "Example: " + COMMAND_WORD + " sort";
 
-    private final boolean shouldSort;
+    public enum SortOrder {
+        NONE,
+        ASCENDING,
+        DESCENDING
+    }
 
-    public ListCommand(boolean shouldSort) {
-        this.shouldSort = shouldSort;
+    private final SortOrder sortOrder;
+
+    public ListCommand(SortOrder sortOrder) {
+        this.sortOrder = sortOrder;
     }
 
     @Override
@@ -32,10 +40,17 @@ public class ListCommand extends Command {
         requireNonNull(model);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
-        if (shouldSort) {
-            model.updateSortedPersonList(Model.SORT_BY_NAME_ASCENDING);
+        switch (sortOrder) {
+        case ASCENDING:
+            model.updateSortedPersonList(SORT_BY_NAME_ASCENDING);
             return new CommandResult(MESSAGE_SUCCESS_SORT);
-        } else {
+
+        case DESCENDING:
+            model.updateSortedPersonList(SORT_BY_NAME_DESCENDING);
+            return new CommandResult(MESSAGE_SUCCESS_SORT);
+
+        case NONE:
+        default:
             model.updateSortedPersonList(null);
             return new CommandResult(MESSAGE_SUCCESS);
         }
