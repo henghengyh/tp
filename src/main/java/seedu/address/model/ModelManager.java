@@ -147,12 +147,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void sortPersons(Comparator<Person> comparator) {
-        ObservableList<Person> internalList = addressBook.getPersonList();
-        FXCollections.sort(internalList, comparator);
-    }
-
-    @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
