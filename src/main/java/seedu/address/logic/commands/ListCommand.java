@@ -16,12 +16,15 @@ public class ListCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Listed all persons";
 
-    public static final String MESSAGE_SUCCESS_SORT = "Listed all persons in alphabetical order";
+    public static final String MESSAGE_SUCCESS_SORT_ASCENDING = "Listed all persons in ascending order";
+    public static final String MESSAGE_SUCCESS_SORT_DESCENDING = "Listed all persons in descending order";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Lists all persons in the address book.\n"
-            + "Parameters: [sort]\n"
-            + "Example: " + COMMAND_WORD + " sort";
+            + "Parameters: [sort] [order]\n"
+            + "Example: " + COMMAND_WORD + " sort\n"
+            + "Example: " + COMMAND_WORD + " sort ascending\n"
+            + "Example: " + COMMAND_WORD + " sort reverse";
 
     public enum SortOrder {
         NONE,
@@ -43,11 +46,11 @@ public class ListCommand extends Command {
         switch (sortOrder) {
         case ASCENDING:
             model.updateSortedPersonList(SORT_BY_NAME_ASCENDING);
-            return new CommandResult(MESSAGE_SUCCESS_SORT);
+            return new CommandResult(MESSAGE_SUCCESS_SORT_ASCENDING);
 
         case DESCENDING:
             model.updateSortedPersonList(SORT_BY_NAME_DESCENDING);
-            return new CommandResult(MESSAGE_SUCCESS_SORT);
+            return new CommandResult(MESSAGE_SUCCESS_SORT_DESCENDING);
 
         case NONE:
         default:
