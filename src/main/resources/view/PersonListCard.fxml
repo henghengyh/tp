@@ -34,11 +34,13 @@
         <ColumnConstraints minWidth="120" halignment="LEFT"/>
         <ColumnConstraints minWidth="180" halignment="LEFT"/>
         <ColumnConstraints minWidth="200" halignment="LEFT"/>
+        <ColumnConstraints minWidth="150" halignment="LEFT"/>
       </columnConstraints>
 
       <Label fx:id="phone" styleClass="cell_small_label phone_label" text="$phone" GridPane.columnIndex="0"/>
       <Label fx:id="email" styleClass="cell_small_label email_label" text="$email" GridPane.columnIndex="1"/>
       <Label fx:id="address" styleClass="cell_small_label address_label" text="$address" GridPane.columnIndex="2"/>
+      <Label fx:id="role" styleClass="cell_small_label role_label" text="$role" GridPane.columnIndex="3"/>
     </GridPane>
   </VBox>
 
@@ -51,5 +53,4 @@
     <!-- BOTTOM: Tags -->
     <FlowPane fx:id="tags" hgap="5" vgap="5"/>
   </VBox>
-
 </HBox>
