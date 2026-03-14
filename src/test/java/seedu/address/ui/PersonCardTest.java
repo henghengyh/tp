@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 import java.lang.reflect.Field;
 import java.util.concurrent.CountDownLatch;
@@ -27,13 +28,14 @@ public class PersonCardTest {
      */
     @BeforeAll
     public static void setUp() {
+        assumeFalse("true".equals(System.getenv("CI")), "Skipping GUI tests on CI environments.");
         System.setProperty("java.awt.headless", "true");
         System.setProperty("testfx.robot", "glass");
         System.setProperty("testfx.headless", "true");
         System.setProperty("prism.order", "sw");
         System.setProperty("prism.text", "t2k");
         try {
-            Platform.startup(() -> {});
+            javafx.application.Platform.startup(() -> {});
         } catch (IllegalStateException e) {
             // Toolkit already initialized
         } catch (UnsupportedOperationException e) {
@@ -98,7 +100,9 @@ public class PersonCardTest {
             personCard[0] = new PersonCard(person, 1);
             latch.countDown();
         });
-        latch.await();
+        if (!latch.await(5, TimeUnit.SECONDS)) {
+            throw new AssertionError("Timeout waiting for JavaFX thread. Toolkit may not have initialized properly.");
+        }
 
         PersonCard card = personCard[0];
 
@@ -122,7 +126,9 @@ public class PersonCardTest {
             differentPersonCard[0] = new PersonCard(person2, 1);
             latch2.countDown();
         });
-        latch2.await();
+        if (!latch2.await(5, TimeUnit.SECONDS)) {
+            throw new AssertionError("Timeout waiting for JavaFX thread. Toolkit may not have initialized properly.");
+        }
 
         // different person, same index -> returns false
         assertFalse(card.equals(differentPersonCard[0]));
@@ -137,7 +143,9 @@ public class PersonCardTest {
             sameCard[0] = new PersonCard(person, 1);
             latch3.countDown();
         });
-        latch3.await();
+        if (!latch3.await(5, TimeUnit.SECONDS)) {
+            throw new AssertionError("Timeout waiting for JavaFX thread. Toolkit may not have initialized properly.");
+        }
         assertTrue(card.equals(sameCard[0]));
     }
 }
