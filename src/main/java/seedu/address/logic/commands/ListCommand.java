@@ -41,6 +41,14 @@ public class ListCommand extends Command {
         this.sortOrder = sortOrder;
     }
 
+    /**
+     * Returns the sorting order of this ListCommand.
+     * @return the sorting order
+     */
+    public SortOrder getSortOrder() {
+        return this.sortOrder;
+    }
+
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
