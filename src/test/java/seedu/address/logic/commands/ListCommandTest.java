@@ -39,4 +39,28 @@ public class ListCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         assertCommandSuccess(new ListCommandParser().parse(""), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
     }
+
+    @Test
+    public void execute_sortAscending_success() throws Exception {
+        ListCommand command = new ListCommand(ListCommand.SortOrder.ASCENDING);
+
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+        expectedModel.updateSortedPersonList(Model.SORT_BY_NAME_ASCENDING);
+
+        assertCommandSuccess(command, model,
+                ListCommand.MESSAGE_SUCCESS_SORT_ASCENDING, expectedModel);
+    }
+
+    @Test
+    public void execute_sortDescending_success() throws Exception {
+        ListCommand command = new ListCommand(ListCommand.SortOrder.DESCENDING);
+
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+        expectedModel.updateSortedPersonList(Model.SORT_BY_NAME_DESCENDING);
+
+        assertCommandSuccess(command, model,
+                ListCommand.MESSAGE_SUCCESS_SORT_DESCENDING, expectedModel);
+    }
 }
