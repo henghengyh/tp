@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.Messages.MESSAGE_ONLY_YES_NO;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.ConfirmDeleteCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
@@ -99,11 +101,45 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
         assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+                -> parser.parseCommand(""));
     }
 
     @Test
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
+    }
+
+    @Test
+    public void parseCommandWithConfirmation_delete() throws Exception {
+        ConfirmDeleteCommand command = (ConfirmDeleteCommand) parser.parseCommandWithConfirmation(
+                ConfirmDeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new ConfirmDeleteCommand(INDEX_FIRST_PERSON), command);
+    }
+
+    @Test
+    public void parseYesNo_yes() throws Exception {
+        assertTrue(parser.parseYesNo("y"));
+        assertTrue(parser.parseYesNo("y ")); // with trailing space
+    }
+
+    @Test
+    public void parseYesNo_no() throws Exception {
+        assertTrue(!parser.parseYesNo("n"));
+        assertTrue(!parser.parseYesNo("n ")); // with trailing space
+    }
+
+    @Test
+    public void parseYesNo_invalid_throwsParseException() {
+        assertThrows(ParseException.class, MESSAGE_ONLY_YES_NO, () -> parser.parseYesNo("invalid"));
+        assertThrows(ParseException.class, MESSAGE_ONLY_YES_NO, () -> parser.parseYesNo("yes"));
+        assertThrows(ParseException.class, MESSAGE_ONLY_YES_NO, () -> parser.parseYesNo("no"));
+    }
+
+    @Test
+    public void parseYesNo_empty_throwsParseException() {
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
+                -> parser.parseYesNo(""));
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
+                -> parser.parseYesNo("   "));
     }
 }
