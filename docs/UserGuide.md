@@ -139,6 +139,13 @@ list reverse
 **Expected Result:**
 All contacts are displayed in descending alphabetical order by name.
 
+#### 3. Bonus: Copying of fields in a list
+
+You can copy the value of a field (e.g. phone number) of a contact in the list to the clipboard by clicking on the field!
+
+**Expected Result:**
+The field turns pink for a temporary period to indicate that it has been copied, and you can paste the value elsewhere.
+
 ### Editing a person : `edit`
 
 Edits an existing person in the address book.
