@@ -2,7 +2,6 @@
 
 ## [v1.3] - 2026-03-19
 
-<<<<<<< HEAD
 ### Changes to MVP - Feature 1
 - XXX
 
@@ -19,7 +18,7 @@
   - Added light visual styling such as bold text and color variations to highlight important contact information.
 
 #### Product UI
-Using `list sort reverse` command to display contacts in reverse order:
+Using `list reverse` command to display contacts in reverse order:
 
 <img src="images/ProductUI_V1-3.png" width="500px">
 
